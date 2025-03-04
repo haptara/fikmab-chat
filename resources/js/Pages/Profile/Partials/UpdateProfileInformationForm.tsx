@@ -36,7 +36,7 @@ export default function UpdateProfileInformation({
           Profile Information
         </h2>
 
-        <p className="mt-1 text-sm text-foreground">
+        <p className="mt-1 text-sm text-secondary-foreground">
           Update your account's profile information and email address.
         </p>
       </header>
