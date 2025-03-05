@@ -6,6 +6,9 @@ export type User = {
   email: string;
   email_verified_at: string;
   avatar: string;
+  jenis_kelamin: string;
+  status: string;
+  bio: string;
   active_status: boolean;
   is_online: boolean;
   last_seen: string;
@@ -20,7 +23,6 @@ export type Contact = {
 
 export type UpdateProfileSchema = {
   _method: Method;
-  name: string;
   email: string;
   avatar: File | null;
 };

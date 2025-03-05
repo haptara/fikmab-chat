@@ -5,6 +5,8 @@ import TextInput from "@/Components/TextInput";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
+import { BsGenderMale } from "react-icons/bs"; // Laki-Laki
+import { BsGenderFemale } from "react-icons/bs"; // Perempuan
 
 export default function Register() {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,6 +14,7 @@ export default function Register() {
     email: "",
     password: "",
     password_confirmation: "",
+    gender: "",
   });
 
   const submit: FormEventHandler = (e) => {
@@ -25,7 +28,13 @@ export default function Register() {
   return (
     <GuestLayout>
       <Head title="Register" />
-
+      {/* <blockquote className="text-center text-2xl font-semibold italic text-slate-900">
+        When you look
+        <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-pink-500">
+          <span className="relative text-white">annoyed</span>
+        </span>
+        all the time, people think that you're busy.
+      </blockquote> */}
       <form onSubmit={submit} className="space-y-4">
         <div>
           <InputLabel htmlFor="name" value="Name" />
@@ -92,6 +101,40 @@ export default function Register() {
           />
 
           <InputError message={errors.password_confirmation} className="mt-2" />
+        </div>
+
+        <div>
+          <InputLabel htmlFor="jenis_kelamin" value="Jenis Kelamin" />
+
+          <div className="my-2 grid gap-4 md:grid-cols-2">
+            <label className="flex cursor-pointer items-center justify-between space-x-2 rounded-lg border p-3 has-[:checked]:bg-primary/10 has-[:checked]:text-primary has-[:checked]:ring-2 has-[:checked]:ring-primary/50">
+              <div className="flex items-center space-x-2">
+                <BsGenderMale className="h-5 w-5" />
+                <span>Laki-Laki</span>
+              </div>
+              <input
+                type="radio"
+                className="h-4 w-4 appearance-none rounded-full border checked:border-primary checked:bg-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                name="gender"
+                value="Laki-laki"
+                onChange={(e) => setData("gender", e.target.value)}
+              />
+            </label>
+            <label className="flex cursor-pointer items-center justify-between space-x-2 rounded-lg border p-3 has-[:checked]:bg-primary/10 has-[:checked]:text-primary has-[:checked]:ring-2 has-[:checked]:ring-primary/50">
+              <div className="flex items-center space-x-2">
+                <BsGenderFemale className="h-5 w-5" />
+                <span>Perempuan</span>
+              </div>
+              <input
+                type="radio"
+                className="h-4 w-4 appearance-none rounded-full border checked:border-primary checked:bg-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                name="gender"
+                value="Perempuan"
+                onChange={(e) => setData("gender", e.target.value)}
+              />
+            </label>
+          </div>
+          <InputError message={errors.gender} className="mt-2" />
         </div>
 
         <div className="flex items-center">

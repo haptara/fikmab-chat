@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -22,6 +24,30 @@ class ProfileController extends Controller
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
+    }
+
+    public function updateAvatar(Request $request){
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif',
+        ]);
+
+        $user = Auth::user();
+
+        // Hapus avatar lama jika ada
+        if ($user->avatar) {
+            $oldAvatarPath = str_replace('/storage/', '', $user->avatar);
+            // Storage::disk('public')->delete($oldAvatarPath);
+            remove_file($oldAvatarPath);
+        }
+
+        // Upload avatar baru
+        $avatarPath = upload_file($request->file('avatar'), 'avatars');
+
+        // Simpan ke database
+        $user->update(['avatar' => $avatarPath]);
+
+        // return response()->json(['message' => 'Avatar updated successfully', 'avatar' => asset($avatarPath)]);
+        return back();
     }
 
     /**

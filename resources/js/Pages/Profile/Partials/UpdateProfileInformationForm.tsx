@@ -5,6 +5,7 @@ import TextInput from "@/Components/TextInput";
 import { Transition } from "@headlessui/react";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEventHandler } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function UpdateProfileInformation({
   mustVerifyEmail,
@@ -26,7 +27,16 @@ export default function UpdateProfileInformation({
   const submit: FormEventHandler = (e) => {
     e.preventDefault();
 
-    patch(route("profile.update"));
+    // patch(route("profile.update"));
+    patch(route("profile.update"), {
+      onSuccess: () => {
+        toast.success("Saved."); // Tampilkan notifikasi sukses
+      },
+      onError: (err) => {
+        toast.error("Failed to save."); // Tampilkan notifikasi error
+        console.log(err);
+      },
+    });
   };
 
   return (
@@ -99,7 +109,7 @@ export default function UpdateProfileInformation({
         <div className="flex items-center gap-4">
           <PrimaryButton disabled={processing}>Save</PrimaryButton>
 
-          <Transition
+          {/* <Transition
             show={recentlySuccessful}
             enter="transition ease-in-out"
             enterFrom="opacity-0"
@@ -107,7 +117,8 @@ export default function UpdateProfileInformation({
             leaveTo="opacity-0"
           >
             <p className="text-sm text-foreground">Saved.</p>
-          </Transition>
+          </Transition> */}
+          <Toaster position="top-right" reverseOrder={false} />
         </div>
       </form>
     </section>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 28, 2025 at 09:53 AM
+-- Generation Time: Mar 05, 2025 at 08:44 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.14
 
@@ -229,16 +229,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(11, '0001_01_01_000000_create_users_table', 1),
-(12, '0001_01_01_000001_create_cache_table', 1),
-(13, '0001_01_01_000002_create_jobs_table', 1),
-(14, '2025_02_28_043619_create_chat_messages_table', 1),
-(15, '2025_02_28_043637_create_chat_messages_files_table', 1),
-(16, '2025_02_28_043729_create_chat_messages_colors_table', 1),
-(17, '2025_02_28_043744_create_chat_contacts_table', 1),
-(18, '2025_02_28_043805_create_chat_archiveds_table', 1),
-(19, '2025_02_28_043817_create_chat_groups_table', 1),
-(20, '2025_02_28_043828_create_chat_groups_members_table', 1);
+(1, '0001_01_01_000000_create_users_table', 1),
+(2, '0001_01_01_000001_create_cache_table', 1),
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2025_02_28_043619_create_chat_messages_table', 1),
+(5, '2025_02_28_043637_create_chat_messages_files_table', 1),
+(6, '2025_02_28_043729_create_chat_messages_colors_table', 1),
+(7, '2025_02_28_043744_create_chat_contacts_table', 1),
+(8, '2025_02_28_043805_create_chat_archiveds_table', 1),
+(9, '2025_02_28_043817_create_chat_groups_table', 1),
+(10, '2025_02_28_043828_create_chat_groups_members_table', 1);
 
 -- --------------------------------------------------------
 
@@ -272,7 +272,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Vzn4p2A60jHl5FOaFvEYosXI1vS9lUeG0Fd1uczM', '9e51884c-15c0-40c4-93dc-61e924278345', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY0tSV2dudlZjUTNHVzlvV2FxSkNHbGtCSWx3YVRMY0dZNGFpemkxayI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9maWxlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO3M6MzY6IjllNTE4ODRjLTE1YzAtNDBjNC05M2RjLTYxZTkyNDI3ODM0NSI7fQ==', 1740735577);
+('EonUHrFhPY9KpYgHKV3ezRMlkadRrdtzqObj1ZaX', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYlZpbU4zR2dtNTZ3dWlOOUxqY1pPYjVuRWhzRTNCU1ZjbUdTMm8zZCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWdpc3RlciI7fX0=', 1741164178);
 
 -- --------------------------------------------------------
 
@@ -287,9 +287,12 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
+  `jenis_kelamin` enum('Laki-Laki','Perempuan') DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `bio` text,
   `active_status` tinyint(1) NOT NULL DEFAULT '1',
   `is_online` tinyint(1) NOT NULL DEFAULT '0',
-  `last_seen` datetime NOT NULL DEFAULT '2025-02-28 08:08:58',
+  `last_seen` datetime NOT NULL DEFAULT '2025-03-05 11:25:25',
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -299,37 +302,37 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `avatar`, `active_status`, `is_online`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
-('9e51884c-15c0-40c4-93dc-61e924278345', 'Fikri Nurmaila', 'fikriisfluffy@gmail.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'LrUUL6qY0b', '2025-02-28 01:09:22', '2025-02-28 01:09:23'),
-('9e51884c-2dd4-4555-857c-7bc5d1f618c2', 'Enrico Klocko', 'linda51@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'C41IrFpMWq', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-379a-4fec-bd8c-ff580a1286ab', 'Mr. Deshawn Beier DVM', 'jones.mazie@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'pX8HxWrM4G', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-40eb-4aec-92b7-3ce5f5bd8569', 'Cheyenne Keeling DDS', 'josianne.larson@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'TVH9xrJbpw', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-4b7a-48f1-a5e6-7ecd48626648', 'Ms. Electa Koch V', 'asia39@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'nCSX8krY5a', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-54c4-4576-be35-bc9fffe5066d', 'Karolann Bogisich', 'armstrong.jacynthe@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'mRVJuMOJ4d', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-748d-44cf-b247-44df85b552d3', 'Delaney O\'Keefe', 'ystanton@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'AASiBPxC3x', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-88a3-4aaa-8b0b-75a212d82afc', 'Maida Kirlin', 'mozell45@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'QK7ZRABRHk', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-b11e-4284-9b67-c8b2f00e9835', 'Jett Green DDS', 'lulu42@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'vfxrAdfWYX', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-c839-4f95-9024-0dfd80feba3d', 'Ayden Feil', 'carey.brekke@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'ZkKsrLU8kS', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-d821-4282-9af7-8cb44768637d', 'Ms. Ara Bosco', 'tavares43@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'TeuUKP7vGM', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-e27c-4922-8fdc-442b2f3734b1', 'Dr. Eve Olson', 'dschroeder@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'wVXFtQHmaN', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-ec00-4f1d-89e5-7c4b7c1ca636', 'Verdie Kautzer', 'chanel87@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'x2zPjvC0yp', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884c-f65c-465d-8909-c7bc24b0c3bd', 'Prof. Beverly Swift V', 'keon92@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'wc9BcgzxGN', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884d-0a3a-485c-ae81-423a79dbb0b5', 'Jaylon Johns', 'vernie31@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', '6DMsQ1cIdz', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884d-1f78-4f4c-bc08-3a682bab462c', 'Mrs. Abigale Mayer', 'armstrong.giovanni@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'XktwQ1VlGf', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884d-29ff-4bd5-aea6-c230e5675bc4', 'Kaci Senger', 'umante@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', '6K9dRIyJZF', '2025-02-28 01:09:22', '2025-02-28 01:09:22'),
-('9e51884d-3357-49ad-8a14-3392b62d2147', 'Melyssa Okuneva', 'wjenkins@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', '8CiUL4QCXI', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-3de0-4d62-941c-9f6dc24bfb21', 'Charles Huel', 'nina.oberbrunner@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'TDgpCFo2Lm', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-472e-46c6-b4d2-593d763e9414', 'Prof. Annette Harris', 'marcel.bechtelar@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'x2gVnSB9MD', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-51c7-44c5-ace2-68fc7256ce4c', 'Ken Weber', 'emard.raven@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'IbyQ7GsoTY', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-5b0f-485f-9b92-a15df433f591', 'Ms. Aleen Price', 'marietta.okeefe@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'exOp5yHXex', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-659e-4d90-9f47-0cc460b508f7', 'Isadore Kling V', 'raegan.bednar@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'qs5QLTo9xH', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-6eed-45c6-92ef-64ef9c5cf3d9', 'Dr. Sim Morar MD', 'jones.benedict@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'XgwGEWw01G', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-7981-4223-b56f-42b1f67bf49b', 'Jaron Becker', 'genesis.bailey@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'ANkiv5q8Jj', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-82cb-4e9b-b5e2-158adb6f31e2', 'Roselyn Kling', 'doyle.luigi@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'eP5eWon0c7', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-8d5d-4b00-a574-231258fc676b', 'Ansley McCullough II', 'sienna.weimann@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'mvZ4HZZYL8', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-96b0-482f-8af3-973aee1df8ae', 'Gus McDermott', 'sydnie43@example.net', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'OwEDX7YRfh', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-a136-4480-998f-06364d86c23a', 'Reta Herman', 'amira49@example.com', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', '37Fnufu21t', '2025-02-28 01:09:23', '2025-02-28 01:09:23'),
-('9e51884d-aa8c-48e8-89e1-24dfd56c3f49', 'Lelah Johnston', 'antonia.schaefer@example.org', '2025-02-28 01:09:22', '$2y$12$nwCkKehGO4lLWBU6re8oD.KYJ6LsSa8P4OhqR4350ClM27Ecyybg6', NULL, 1, 0, '2025-02-28 08:08:58', 'J5Je2S3XNj', '2025-02-28 01:09:23', '2025-02-28 01:09:23');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `avatar`, `jenis_kelamin`, `status`, `bio`, `active_status`, `is_online`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
+('9e5b4cc7-7746-49f1-b662-8020a0ee3cfb', 'Fikri Tamvan Sekaleee', 'fikriisfluffy@gmail.com', '2025-03-05 04:41:06', '$2y$12$rohq6HU0FDaat64U1VnFd.JjuNBAWidXt3RoKJmZC6HjS.vCNPW1C', '/storage/avatars/46f89ddc-94c1-4a1d-aa1e-dd2afff75486.jpg', 'Laki-Laki', 'sibuk', 'Qui sequi qui explicabo ab. Voluptate possimus rerum maxime debitis reprehenderit et et. Enim iure quis suscipit quia aspernatur. Aut facilis necessitatibus vel molestias est.', 1, 0, '2025-03-05 11:25:25', 'fEceRRY6cu2MCcgeoblaNL6SleiturqqEBWpyMjsckoMnoA4EnCxrb8WPAZN', '2025-03-05 04:41:14', '2025-03-05 07:46:45'),
+('9e5b4cc8-5e5f-4a48-b5d5-4812913fe6d6', 'Ajimin Januar', 'hasanah.syahrini@example.net', '2025-03-05 04:41:06', '$2y$12$YJjH5sWygDiRecN4SAmX8uSNYuN5FT95HO799zSVVRqenthR5cj8y', '5f2ec1', 'Laki-Laki', 'sibuk', 'Voluptatem facilis cum occaecati debitis est. Totam deserunt et necessitatibus placeat repudiandae et. Minus laudantium quidem velit eos et aliquam nihil. Quo ab nostrum nulla quo.', 1, 0, '2025-03-05 11:25:25', 'YZSLO60z6r', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-6bd4-4385-8274-b925e0bdda34', 'Rina Hariyah', 'sari.hidayanto@example.net', '2025-03-05 04:41:06', '$2y$12$fYFHc6v7xehSMApWpnxSi.bJmU85i9ei6HjjyLeFnOE32DAUOynN6', '21ab2b', 'Perempuan', 'sibuk', 'Et vero incidunt vitae itaque. Rem a laborum quis dolores et qui molestiae. Veritatis voluptatibus ut voluptatem dicta sed pariatur optio. Possimus quas neque sunt ea exercitationem quia et.', 1, 0, '2025-03-05 11:25:25', 'J52GAHg2dE', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-795c-4895-b0f7-597f89151080', 'Salimah Wahyuni', 'yulianti.cahyadi@example.org', '2025-03-05 04:41:07', '$2y$12$uosvn3VhTHOf6ECPlVM5UeZWteeF5Xre3zr8kSrD9fjbgm9PJTqae', '1c7777', 'Perempuan', 'sibuk', 'Ea id tempore neque et quas aut enim. Sint laborum accusantium occaecati aut impedit enim. Occaecati dolores porro iusto voluptates. Dolorem ad et dolorum explicabo. Architecto autem tempore et.', 1, 0, '2025-03-05 11:25:25', 'SjeNzhPgdN', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-87a0-4efa-88c3-7fc66fe53a97', 'Lamar Rangga Wijaya S.E.', 'silvia.agustina@example.com', '2025-03-05 04:41:07', '$2y$12$tzONOswGj0LyPuxMZnxS3uzlD3W9C5DNXVoVEQSkEVkLNdSo9LXhG', 'c43ac4', 'Laki-Laki', 'sibuk', 'Est dolore eum saepe quidem error reprehenderit. Voluptatem et nostrum praesentium assumenda eligendi quia numquam vitae. Aut minus aut at ut vel tempore.', 1, 0, '2025-03-05 11:25:25', 'MiN7ZM3MXJ', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-9532-4dc0-9032-070fdf332e57', 'Jono Pradana', 'wisnu.nasyidah@example.org', '2025-03-05 04:41:07', '$2y$12$MGDXqEN7WauG2DcrzHFM2Oxnm.lShtwOYskEPiexqFdm3i8muHUqO', 'eef0b0', 'Laki-Laki', 'sibuk', 'Consequuntur quis delectus rerum vero vel ut saepe. Incidunt recusandae et qui id. Atque odio quam aut sunt eaque.', 1, 0, '2025-03-05 11:25:25', '3fWgRhHPCM', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-9f7c-44ea-ade2-2763bbca8990', 'Prasetya Hutapea', 'jwahyuni@example.net', '2025-03-05 04:41:07', '$2y$12$7d/KAzy/fP2Z9gi6kMR6i.md8xY.kGGN3ptpxDdlVq12l2Zs1mAO6', '8ba6e0', 'Laki-Laki', 'sibuk', 'Assumenda veniam voluptatibus et consectetur. Quod autem nisi nobis esse eum.', 1, 0, '2025-03-05 11:25:25', 'waJvcyGKxz', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-a911-495f-9615-23bb0700fb92', 'Hilda Hariyah S.E.', 'bahuwarna25@example.org', '2025-03-05 04:41:07', '$2y$12$bXBWzTWqu0PFlGPZ0ZX/buZhTpuqKxXOewGpRkaN5G4nunAI3GXm.', '7435f5', 'Perempuan', 'sibuk', 'Praesentium est a earum. Omnis nulla id ut vero. Saepe fugit molestiae ad accusantium cupiditate laudantium aliquid.', 1, 0, '2025-03-05 11:25:25', 'u5xuAQ74w1', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-b35a-4282-aac3-5c902b70b1d5', 'Rika Andriani', 'napitupulu.hasna@example.org', '2025-03-05 04:41:08', '$2y$12$PTncKNHaB4tYNzVkfsgOde7Pw4T9/sWBW2I/vCgXIYj8G9AyKRxSu', '72cbed', 'Perempuan', 'sibuk', 'Inventore nam similique quia doloremque. Id laudantium ea corrupti et. Adipisci est voluptas iste eaque cumque tempore.', 1, 0, '2025-03-05 11:25:25', 'gAtwhmRXjN', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-bcee-4b38-9e43-51779920c4cb', 'Wahyu Mandala S.Pt', 'dwulandari@example.net', '2025-03-05 04:41:08', '$2y$12$ILEkguj.ywAoJiiLRSkOyODS/.hLKq4UaXnvrEkP9N/VQBzY0jdIK', 'f10f53', 'Laki-Laki', 'sibuk', 'Quis nisi et maiores sapiente aut quam. Qui et magni provident vel. Velit voluptas atque culpa recusandae fugit.', 1, 0, '2025-03-05 11:25:25', 'kIh4KEa12K', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-c739-4ba5-a1e9-d4c4b779bf41', 'Farhunnisa Pia Hassanah', 'paulin.manullang@example.org', '2025-03-05 04:41:08', '$2y$12$nIpt9.iu2wc3K7oJngtjX.xlVULPHcT/W6taeRYum.2UKcHyEOaOy', 'ec4a7f', 'Perempuan', 'sibuk', 'Ullam quos nemo culpa. Nemo est quia dignissimos est ut ab. Cum rerum temporibus odit minus dolores molestias consequatur atque. Ut mollitia cumque et ratione.', 1, 0, '2025-03-05 11:25:25', 'viAjzt4nLC', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-d0e7-46fc-8d7b-18c8005f57f7', 'Wasis Harsaya Pangestu', 'hardi.yolanda@example.com', '2025-03-05 04:41:08', '$2y$12$W46Jj/xDRWC.lQhgYrpZy.vY5ronHFQLrHpDLlyJSsozMfUQlD6Gu', '0c3e37', 'Laki-Laki', 'sibuk', 'A sint dolor quia mollitia dolorem. Nam ut et aut voluptatibus. Quia accusantium animi quis deleniti itaque.', 1, 0, '2025-03-05 11:25:25', 'zpePfjwOzr', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-db1c-4d39-a499-fd2fa57e3930', 'Wulan Widiastuti', 'mitra.wacana@example.org', '2025-03-05 04:41:08', '$2y$12$9R8EyKYMMlEZlseEEiQBsOgp24UNt0QX.OJvoa3rz0MEPU31ERTZa', '76f889', 'Perempuan', 'sibuk', 'Non distinctio doloremque quod animi fugit. Vero tempore reprehenderit asperiores. Et molestias et explicabo debitis deserunt rem deserunt.', 1, 0, '2025-03-05 11:25:25', 'Z29eSqPbY6', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-e4a8-4d05-801a-bb64336341f0', 'Mulyono Joko Suryono', 'radika80@example.net', '2025-03-05 04:41:09', '$2y$12$MyNjdydFBMfo.MTyngkXYezrwmEUn97VG4pObMqh0E.Iryv/A.sti', '1581b9', 'Laki-Laki', 'sibuk', 'Voluptates error dolores sit tempora ut fuga. Non quisquam quia velit ad in enim. Sunt possimus aperiam assumenda aut rerum suscipit. Aliquam id quia corporis et nulla dolores ipsum dolore.', 1, 0, '2025-03-05 11:25:25', 'qJkqebk99a', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-eefb-486c-8425-b84547bf6fca', 'Eja Winarno', 'wsantoso@example.com', '2025-03-05 04:41:09', '$2y$12$dVy39cdGYwZ9D/afsgJIquHWTRVJA69D4lk582hHm7VLk5ENy6v1S', 'b89966', 'Laki-Laki', 'sibuk', 'Sed sunt est ratione eligendi deleniti sunt nemo. Quia fugit distinctio autem nihil et eius. At est soluta est. Laboriosam adipisci reiciendis quae quia sapiente. Enim voluptates architecto unde.', 1, 0, '2025-03-05 11:25:25', 'ONUcXAfwV5', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc8-f888-42d1-b864-7ca31f0688aa', 'Kamidin Simbolon', 'salimah.widodo@example.com', '2025-03-05 04:41:09', '$2y$12$ZhP9FT2t0EzXLXJdCkkX7.oJVEdjxWiMUAQEqqFS8jlemjPvQGaLS', 'd6d624', 'Laki-Laki', 'sibuk', 'Neque odio aliquam impedit vel amet praesentium aut reprehenderit. Porro et sed sapiente fuga. Deleniti corrupti aut maxime dolorem ipsa. Incidunt qui molestiae velit similique.', 1, 0, '2025-03-05 11:25:25', 'UrlxCRIe1Y', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-02d6-4e1b-afcb-0f669aaa64e5', 'Anita Yuniar S.E.I', 'genta.habibi@example.org', '2025-03-05 04:41:09', '$2y$12$NgULJt1p5qEJqyGRVjiMZu7tZ5FVxTFNut1lIR9FZxeP11v9lL.9K', '1dcfed', 'Perempuan', 'sibuk', 'Doloribus et nemo laudantium et mollitia consequatur. Id sit sed quasi ipsum illo. Iste quia consequatur deleniti ut. Unde qui et magnam voluptatem.', 1, 0, '2025-03-05 11:25:25', 'tN4dNV3TSd', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-0c6b-4429-bc4a-81d6c879cf22', 'Tami Purnawati', 'lwijaya@example.org', '2025-03-05 04:41:09', '$2y$12$gxZsEjcXOdEgkXEyuk6OReVkuldEB7cSE5hNIrVUYCd6zwUV8Prgu', '4f110d', 'Perempuan', 'sibuk', 'Ut culpa quibusdam vel neque. Veritatis aspernatur reiciendis quas atque et illo. Quos quis natus laborum est.', 1, 0, '2025-03-05 11:25:25', '6bWQKaXx48', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-16b9-4f7d-8418-d19c2002604c', 'Ivan Makuta Samosir M.Ak', 'raisa10@example.com', '2025-03-05 04:41:10', '$2y$12$ow3dgHbxTMp.m3cMbbd4ruy4dq4nSBsY6xQ8zkbLc0dOndZQPPKcC', '04d07b', 'Laki-Laki', 'sibuk', 'Corporis ut quas ut. Molestiae sit qui in aut totam quos. Molestias non quo qui veritatis ut. Molestias provident tempora sint aliquid incidunt et.', 1, 0, '2025-03-05 11:25:25', '7iwnBqFLdi', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-2045-4e0f-93f2-70f7c19b66a1', 'Timbul Widodo', 'praba.sudiati@example.net', '2025-03-05 04:41:10', '$2y$12$MwnHnwMDJcTCCNPhfFyjpeu67HrSl4vFIoiUhLal3TuMA67sfD/Mm', '15cd99', 'Laki-Laki', 'sibuk', 'Dignissimos possimus quisquam ea quod blanditiis repudiandae est sed. Quod voluptates asperiores vero. Nostrum ratione cumque vitae et consequuntur accusamus. Corporis aliquid ipsum dolor labore.', 1, 0, '2025-03-05 11:25:25', 'VGLxNwnZtB', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-42a2-4dd7-abf4-b14ea34e0906', 'Asirwada Irawan', 'galih.rahayu@example.com', '2025-03-05 04:41:10', '$2y$12$ldCi79XXNL1fKixKBcZt9.gVuV1WLb6dRX/3uF0hAx2FltGIyUp7.', '46b49b', 'Laki-Laki', 'sibuk', 'Et quia quam tempore esse laboriosam dicta odit. Aliquam optio alias cum ex. Illum sequi quidem beatae assumenda itaque ut dicta. Ratione sint voluptates exercitationem.', 1, 0, '2025-03-05 11:25:25', 'eTOieUywM6', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-564e-4547-9bb1-494e70ca34d3', 'Zalindra Suartini M.TI.', 'shariyah@example.org', '2025-03-05 04:41:10', '$2y$12$/nz3tJ/E1CUBRLmInS4DLOwGImxCZvG0jAaAcTmpSp4cjLzieh7oy', '4f696c', 'Perempuan', 'sibuk', 'Expedita necessitatibus laboriosam odio ducimus officiis ex omnis. Rerum nihil sed repellendus provident vero quos. Ea nam aut officia at tempora velit rem aspernatur.', 1, 0, '2025-03-05 11:25:25', 'MfqPkPN73F', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-7acb-4771-926d-1002b721cec2', 'Erik Utama Kuswoyo', 'jfarida@example.net', '2025-03-05 04:41:10', '$2y$12$OLxoBPlNdMdYnbKKjxSgReDobkC6g0jl73lK4xcLAEn14Lf63DrpK', '3160e4', 'Laki-Laki', 'sibuk', 'Quis et dolor mollitia. Sed sit ea omnis. Esse numquam temporibus id dolores dicta ut. Quo iusto accusantium quia velit corrupti dignissimos possimus qui.', 1, 0, '2025-03-05 11:25:25', 'ryMaqdtMYm', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-9e88-4cd9-9040-db7dc0f06711', 'Malika Umi Uyainah', 'mulyani.umar@example.com', '2025-03-05 04:41:11', '$2y$12$vUlSh7MzortMwWNPIwYMuupSvpJGzS16hxFGfh3OaCCd6qP1Zen6u', '7d4b0e', 'Perempuan', 'sibuk', 'Dolorum sit magni magni rerum non adipisci ut. Eius esse earum eos. Cum iure quae eos beatae. Cumque itaque animi est voluptatem nostrum.', 1, 0, '2025-03-05 11:25:25', '8mn1hIMKfK', '2025-03-05 04:41:14', '2025-03-05 04:41:14'),
+('9e5b4cc9-b6ce-4650-8dd4-fff44f36e76e', 'Michelle Suartini', 'egunarto@example.org', '2025-03-05 04:41:11', '$2y$12$zGIwg4dqEmF3UaVbk71UDusbkveGc1jy/rVcHxzm1JJRWk7MbO9ba', '6180e0', 'Perempuan', 'sibuk', 'Odio adipisci ad mollitia maiores aut dolor libero est. Fugit rerum quibusdam omnis eos. Deserunt rerum quo eaque esse dolor dolor repellendus. Eaque ea blanditiis enim et.', 1, 0, '2025-03-05 11:25:25', 'vBolmayCYr', '2025-03-05 04:41:15', '2025-03-05 04:41:15'),
+('9e5b4cc9-d5a8-49be-b7c2-004c0d44a735', 'Jumadi Sabri Winarno', 'umar34@example.org', '2025-03-05 04:41:11', '$2y$12$bkXUskuBtvD4.YwG73mi.uu09pNgdxr/zwe/nSACmqU56MxPsAkUe', '17ba49', 'Laki-Laki', 'sibuk', 'Vel fugit saepe minus sunt. Et quas nam fugiat placeat soluta rerum sequi. Corrupti iusto odit magnam quibusdam nihil. Aut quasi qui culpa odio quod ut consequatur.', 1, 0, '2025-03-05 11:25:25', 'VYn8Lz5FFU', '2025-03-05 04:41:15', '2025-03-05 04:41:15'),
+('9e5b4cc9-f14b-46fd-9d7f-71fec6d33f9e', 'Sari Wastuti M.M.', 'qrajata@example.com', '2025-03-05 04:41:11', '$2y$12$.bC2pEIwXfUYgI5kEqGYxONXsegoIZ4BCPHFjMZayRUFAV3nhbRDu', '7e839e', 'Perempuan', 'sibuk', 'Sed cumque nihil neque voluptatem. Eius quia placeat totam maxime iste.', 1, 0, '2025-03-05 11:25:25', 'QC1VTLMyXH', '2025-03-05 04:41:15', '2025-03-05 04:41:15'),
+('9e5b4cca-055b-4f64-877d-44c5390a8266', 'Edi Atma Sitorus', 'natsir.nalar@example.org', '2025-03-05 04:41:11', '$2y$12$O/YxVsjgvXHNSJty.KdtX.4f0.DqbdtIVSF6LUUgK85s2jY2GZ2lm', '4e607b', 'Laki-Laki', 'sibuk', 'Sunt veritatis soluta dolores voluptatibus tempore ex facilis. Officiis magnam aut occaecati doloribus sed dignissimos et. Tempore aperiam accusantium cum sit quia velit dolorem.', 1, 0, '2025-03-05 11:25:25', 'MpZfW1zmxY', '2025-03-05 04:41:15', '2025-03-05 04:41:15'),
+('9e5b4cca-0eaf-42ab-9bbf-f30fc8e7402b', 'Ghani Siregar', 'safitri.alika@example.org', '2025-03-05 04:41:12', '$2y$12$lME.P9f/D69qtFZiGBwISOUNjMJty.jxm0Ze3jE3gPZnZh06TqJmO', 'f07bf9', 'Laki-Laki', 'sibuk', 'Fugit voluptatem est facere tenetur. Eum enim beatae fuga doloribus et suscipit qui. Ut esse repudiandae minima omnis velit ducimus. Et odit enim vel ea qui iure dolorem.', 1, 0, '2025-03-05 11:25:25', '6qm3xMNz0V', '2025-03-05 04:41:15', '2025-03-05 04:41:15'),
+('9e5b4cca-1aec-423e-9edd-685616567f9a', 'Hasna Wahyuni M.Ak', 'lalita.nasyidah@example.net', '2025-03-05 04:41:12', '$2y$12$DxpX/YrMGP.geAQtCujSX.6sealHIkGRBXVI42ftW9OpF0yMsQPsy', 'b5ca8b', 'Perempuan', 'sibuk', 'Consequuntur et sit illo nostrum. Dolore veritatis vitae voluptatibus. Maiores rerum blanditiis est et nobis perspiciatis.', 1, 0, '2025-03-05 11:25:25', '9tqYCLaIA0', '2025-03-05 04:41:15', '2025-03-05 04:41:15');
 
 --
 -- Indexes for dumped tables
@@ -467,7 +470,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
