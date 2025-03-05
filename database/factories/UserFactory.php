@@ -23,13 +23,21 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $hexColor = fake()->hexColor();
+        $hexColorWithoutHash = ltrim($hexColor, '#');
+        $gender = fake()->randomElement(['male', 'female']); // Pilih jenis kelamin secara acak
+        $name = fake()->name($gender); // Hasilkan nama sesuai jenis kelamin
+
+
         return [
-            'name' => fake()->name(),
+            'name' => $name,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ?? Hash::make('password'),
             'remember_token' => Str::random(10),
-            'avatar' => fake()->imageUrl(256, 256)
+            'avatar' => $hexColorWithoutHash,
+            'jenis_kelamin' => $gender === 'male' ? 'Laki-laki' : 'Perempuan',
+            'bio'   => fake()->text()
         ];
     }
 

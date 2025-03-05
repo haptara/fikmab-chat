@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan'])->nullable();
+            $table->string('status')->default('sibuk');
+            $table->text('bio')->nullable();
             $table->boolean('active_status')->default(1);
             $table->boolean('is_online')->default(0);
             $table->dateTime('last_seen')->default(now());

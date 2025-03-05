@@ -1,0 +1,7 @@
+https://placehold.co/256x256/000000/FFF ( COLOR )
+https://placehold.co/600x400?text=Hello+World ( TEXT )
+https://placehold.co/600x400?font=Poppins ( FONTS )
+
+https://placehold.co/800?text=Hello+World&font=roboto (TEXT + FONT)
+
+https://placehold.co/256x256/000000/FFF?text=Hello+World&font=poppins
